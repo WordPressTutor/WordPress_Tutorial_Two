@@ -269,7 +269,7 @@ function custom_woocommerce_employee_shortcode()
         <p id="emp-dept">Employee Department: <span></span></p>
         <button id="get-employee">Get Employee Info</button>
     </div>
-    <?php
+<?php
 
     // Return the output
     return ob_get_clean();
@@ -303,9 +303,10 @@ add_action('wp_ajax_nopriv_get_employee_data', 'custom_get_employee_data');
 
 //-------------------------------------------------------------------------------------------
 
-function display_submitted_data_shortcode() {
+function display_submitted_data_shortcode()
+{
     ob_start();
-    ?>
+?>
     <div class="submitted-data">
         <form action="" method="POST" id="address-filter-form">
             <label for="address-filter">Filter by Address:</label>
@@ -346,10 +347,11 @@ function display_submitted_data_shortcode() {
 add_shortcode('display_submitted_data', 'display_submitted_data_shortcode');
 
 
-function get_submitted_data($address_filter = '') {
+function get_submitted_data($address_filter = '')
+{
     global $wpdb;
     $table_name = $wpdb->prefix . 'ajax_form';
-   
+
 
     $query = "SELECT * FROM $table_name";
     if (!empty($address_filter)) {
@@ -360,7 +362,7 @@ function get_submitted_data($address_filter = '') {
 
     ob_start();
     if ($results) {
-        ?>
+    ?>
         <table>
             <thead>
                 <tr>
@@ -385,12 +387,13 @@ function get_submitted_data($address_filter = '') {
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <?php
-    } 
+    <?php
+    }
 }
 
 
-function filter_submitted_data_ajax_handler() {
+function filter_submitted_data_ajax_handler()
+{
     $address_filter = isset($_POST['address_filter']) ? sanitize_text_field($_POST['address_filter']) : '';
     echo get_submitted_data($address_filter);
 }
@@ -405,7 +408,8 @@ add_action('wp_ajax_nopriv_filter_submitted_data', 'filter_submitted_data_ajax_h
 //----------------------------------------------------------------------------------------------------
 //wordpress category post list and pagination functions
 // Enqueue scripts
-function enqueue_ajax_scripts() {
+function enqueue_ajax_scripts()
+{
     wp_enqueue_script('jquery');
 
     wp_localize_script('jquery', 'custom_table_ajax', array(
@@ -415,7 +419,8 @@ function enqueue_ajax_scripts() {
 add_action('wp_enqueue_scripts', 'enqueue_ajax_scripts');
 
 // AJAX handler
-function custom_table_ajax_handler() {
+function custom_table_ajax_handler()
+{
     check_ajax_referer('custom_table_nonce', 'security');
 
     $category_filter = isset($_POST['post_categories']) ? sanitize_text_field($_POST['post_categories']) : '';
@@ -487,7 +492,7 @@ function custom_table_ajax_handler() {
         }
         ?>
     </div>
-    <?php
+<?php
     $table_html = ob_get_clean();
 
     wp_send_json_success($table_html);
@@ -496,9 +501,10 @@ add_action('wp_ajax_custom_table_filter', 'custom_table_ajax_handler');
 add_action('wp_ajax_nopriv_custom_table_filter', 'custom_table_ajax_handler');
 
 // Shortcode for displaying the table
-function custom_post_table() {
+function custom_post_table()
+{
     $categories = get_terms(array('taxonomy' => 'category', 'hide_empty' => false));
-    ?>
+?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <div class="table">
         <div class="row">
@@ -646,3 +652,140 @@ new WooCommerceProductMetaBox();
 
 //----------------------------------------------------------------
 
+
+
+// Function to add custom rating display after the product title
+
+function add_custom_rating_display_after_title()
+{
+    global $product;
+    if (is_product()) {
+        $average_rating = $product->get_average_rating();
+        $total_ratings = $product->get_rating_count();
+        $percentage5 = ($product->get_rating_count(5) / $total_ratings) * 100;
+        $percentage4 = ($product->get_rating_count(4) / $total_ratings) * 100;
+        $percentage3 = ($product->get_rating_count(3) / $total_ratings) * 100;
+        $percentage2 = ($product->get_rating_count(2) / $total_ratings) * 100;
+        $percentage1 = ($product->get_rating_count(1) / $total_ratings) * 100;
+        echo '
+        <style>
+            .rating-count-star-section {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                width: fit-content;
+                position: relative;
+                font-family: sans-serif;
+            }
+
+            .rating-star {
+                display: flex;
+                align-items: center;
+            }
+
+            .rating-star svg {
+                width: 20px;
+                height: 20px;
+                color: gold;
+            }
+
+            .rating-popover {
+                overflow: hidden;
+                border: 1px solid #bbbfbf;
+                border-color: #bbbfbf;
+                width: 100%;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(15, 17, 17, 0.15);
+                background-color: #fff;
+                padding: 10px;
+                position: absolute;
+                top: calc(100% + 0px);
+                min-width: 200px;
+                display: none;
+            }
+
+            .rating-count-star-section:hover .rating-popover {
+                display: block;
+            }
+
+            .rating-popover table {
+                width: 100%;
+                margin: 10px 0 0;
+            }
+
+            .rating-popover table tr td {
+                padding: 5px 0;
+                text-align: center;
+            }
+           
+            .rating-star span {
+                font-size: 30px;
+                color: #FFD700; /* Set the color to yellow */
+                margin-right: 5px; /* Adjust the spacing between stars */
+            }
+
+            /* Style for filled stars */
+            .rating-star .star-★ {
+            color: #FFD700; /* Set the color to yellow */
+        }
+
+        </style>';
+        echo '
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+        jQuery.noConflict();
+        jQuery(document).ready(function($) {
+            $(".rating-count-star-section").hover(
+                function() {
+                    $(".rating-popover").show();
+                },
+                function() {
+                    $(".rating-popover").hide();
+                }
+            );
+        });
+        </script>';
+        echo '
+        <div class="rating-wrapper-section">
+            <div class="rating-section">
+                <div class="rating-count-star-section">
+                    <span>' . esc_html($average_rating) . '</span>
+                    <div class="rating-star">';
+
+        for ($i = 1; $i <= 5; $i++) {
+            $filled_star = $i <= $average_rating ? '★' : '☆';
+            echo '<span class="star-' . $filled_star . '">' . $filled_star . '</span>';
+        }
+        echo '
+                    </div>
+                    <div class="rating-popover">
+                        <table>
+                            <tr>
+                                <td>5 Star</td>
+                                <td>' . esc_html(number_format($percentage5, 0)) . '%</td>
+                            </tr>
+                            <tr>
+                                <td>4 Star</td>
+                                <td>' . esc_html(number_format($percentage4, 0)) . '%</td>
+                            </tr>
+                            <tr>
+                                <td>3 Star</td>
+                                <td>' . esc_html(number_format($percentage3, 0)) . '%</td>
+                            </tr>
+                            <tr>
+                                <td>2 Star</td>
+                                <td>' . esc_html(number_format($percentage2, 0)) . '%</td>
+                            </tr>
+                            <tr>
+                                <td>1 Star</td>
+                                <td>' . esc_html(number_format($percentage1, 0)) . '%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>';
+    }
+}
+add_action('woocommerce_before_add_to_cart_form', 'add_custom_rating_display_after_title', 20);
+?>

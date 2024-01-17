@@ -1,0 +1,91 @@
+2024-01-17T17:07:49+00:00 CRITICAL Uncaught Error: Call to undefined method WC_Product_Simple::get_rating_percentage() in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php:768
+Stack trace:
+#0 C:\xampp\htdocs\site2\wp-includes\shortcodes.php(433): custom_rating_shortcode('', '', 'custom_rating')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\xampp\htdocs\site2\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(custom...', 'do_shortcode_ta...', 'Material &amp; ...')
+#3 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\includes\class-wc-structured-data.php(203): do_shortcode('Material &amp; ...')
+#4 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(324): WC_Structured_Data->generate_product_data(Object(WC_Product_Simple))
+#5 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 C:\xampp\htdocs\site2\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\content-single-product.php(60): do_action('woocommerce_sin...')
+#8 C:\xampp\htdocs\site2\wp-includes\template.php(792): require('C:\\xampp\\htdocs...')
+#9 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template('C:\\xampp\\htdocs...', false)
+#10 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\single-product.php(37): wc_get_template_part('content', 'single-product')
+#11 C:\xampp\htdocs\site2\wp-includes\template-loader.php(106): include('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\site2\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\site2\index.php(17): require('C:\\xampp\\htdocs...')
+#14 {main}
+  thrown in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php on line 768
+
+2024-01-17T17:10:10+00:00 CRITICAL Uncaught Error: Call to undefined method WC_Product_Simple::get_rating_percentage() in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php:767
+Stack trace:
+#0 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(324): display_custom_rating_section('')
+#1 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\xampp\htdocs\site2\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\content-single-product.php(76): do_action('woocommerce_aft...')
+#4 C:\xampp\htdocs\site2\wp-includes\template.php(792): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template('C:\\xampp\\htdocs...', false)
+#6 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\single-product.php(37): wc_get_template_part('content', 'single-product')
+#7 C:\xampp\htdocs\site2\wp-includes\template-loader.php(106): include('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\site2\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#9 C:\xampp\htdocs\site2\index.php(17): require('C:\\xampp\\htdocs...')
+#10 {main}
+  thrown in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php on line 767
+
+2024-01-17T17:11:11+00:00 CRITICAL Uncaught DivisionByZeroError: Division by zero in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php:774
+Stack trace:
+#0 C:\xampp\htdocs\site2\wp-includes\shortcodes.php(433): custom_rating_shortcode('', '', 'custom_rating')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\xampp\htdocs\site2\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(custom...', 'do_shortcode_ta...', 'Material &amp; ...')
+#3 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\includes\class-wc-structured-data.php(203): do_shortcode('Material &amp; ...')
+#4 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(324): WC_Structured_Data->generate_product_data(Object(WC_Product_Simple))
+#5 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 C:\xampp\htdocs\site2\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\content-single-product.php(60): do_action('woocommerce_sin...')
+#8 C:\xampp\htdocs\site2\wp-includes\template.php(792): require('C:\\xampp\\htdocs...')
+#9 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template('C:\\xampp\\htdocs...', false)
+#10 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\single-product.php(37): wc_get_template_part('content', 'single-product')
+#11 C:\xampp\htdocs\site2\wp-includes\template-loader.php(106): include('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\site2\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\site2\index.php(17): require('C:\\xampp\\htdocs...')
+#14 {main}
+  thrown in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php on line 774
+
+2024-01-17T17:12:23+00:00 CRITICAL Uncaught DivisionByZeroError: Division by zero in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php:774
+Stack trace:
+#0 C:\xampp\htdocs\site2\wp-includes\shortcodes.php(433): custom_rating_shortcode('', '', 'custom_rating')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\xampp\htdocs\site2\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(custom...', 'do_shortcode_ta...', 'Material &amp; ...')
+#3 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\includes\class-wc-structured-data.php(203): do_shortcode('Material &amp; ...')
+#4 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(324): WC_Structured_Data->generate_product_data(Object(WC_Product_Simple))
+#5 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 C:\xampp\htdocs\site2\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\content-single-product.php(60): do_action('woocommerce_sin...')
+#8 C:\xampp\htdocs\site2\wp-includes\template.php(792): require('C:\\xampp\\htdocs...')
+#9 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template('C:\\xampp\\htdocs...', false)
+#10 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\single-product.php(37): wc_get_template_part('content', 'single-product')
+#11 C:\xampp\htdocs\site2\wp-includes\template-loader.php(106): include('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\site2\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\site2\index.php(17): require('C:\\xampp\\htdocs...')
+#14 {main}
+  thrown in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php on line 774
+
+2024-01-17T17:12:51+00:00 CRITICAL Uncaught DivisionByZeroError: Division by zero in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php:774
+Stack trace:
+#0 C:\xampp\htdocs\site2\wp-includes\shortcodes.php(433): custom_rating_shortcode('', '', 'custom_rating')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\xampp\htdocs\site2\wp-includes\shortcodes.php(273): preg_replace_callback('/\\[(\\[?)(custom...', 'do_shortcode_ta...', 'Material &amp; ...')
+#3 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\includes\class-wc-structured-data.php(203): do_shortcode('Material &amp; ...')
+#4 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(324): WC_Structured_Data->generate_product_data(Object(WC_Product_Simple))
+#5 C:\xampp\htdocs\site2\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#6 C:\xampp\htdocs\site2\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\content-single-product.php(60): do_action('woocommerce_sin...')
+#8 C:\xampp\htdocs\site2\wp-includes\template.php(792): require('C:\\xampp\\htdocs...')
+#9 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\includes\wc-core-functions.php(284): load_template('C:\\xampp\\htdocs...', false)
+#10 C:\xampp\htdocs\site2\wp-content\plugins\woocommerce\templates\single-product.php(37): wc_get_template_part('content', 'single-product')
+#11 C:\xampp\htdocs\site2\wp-includes\template-loader.php(106): include('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\site2\wp-blog-header.php(19): require_once('C:\\xampp\\htdocs...')
+#13 C:\xampp\htdocs\site2\index.php(17): require('C:\\xampp\\htdocs...')
+#14 {main}
+  thrown in C:\xampp\htdocs\site2\wp-content\themes\astra\functions.php on line 774
+
